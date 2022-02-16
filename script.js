@@ -40,3 +40,36 @@ fetchDataPromise(urlWetherCurrent)
 
     console.log(data)
   })
+
+
+  function templateWetherCurrent () {
+      return `
+        <div class="heder">
+			<div class="city">
+				<h2>Belarus</h2>
+				<p>00:00</p>
+			</div>
+			<div class="temperature">
+				<h1>-3 C</h1>
+				<p>Feels like -8 C</p>
+			</div>
+			<div class="wind">
+				<p>East</p>
+				<p>12 m/s</p>
+			</div>
+		</div>
+      `
+  }
+
+
+  function templateWetherByDays () {
+    return `
+        <div class="main">
+            <div class="day">
+                <p>03 Jan 12a.m.</p>
+                <p>⭐</p>
+                <p>-3 C</p>
+            </div>
+        </div>
+    `
+  }

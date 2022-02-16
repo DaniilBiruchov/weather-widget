@@ -1,0 +1,44 @@
+.heder {
+	max-width: 500px;
+	margin: 0 auto;
+	background: lightgreen;
+	padding: 0 20px;
+
+}
+
+.city {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-bottom: 20px;
+}
+
+.temperature {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+.wind {
+	display: flex;
+	justify-content: space-around;
+}
+
+.main {
+	max-width: 500px;
+	margin: 0 auto;
+	background: lightgrey;
+	padding: 0 20px;
+}
+
+.day {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid grey;
+}
+
+.day:last-child {
+	border: none;
+}
