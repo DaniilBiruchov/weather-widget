@@ -38,6 +38,7 @@ fetchDataPromise(urlWetherCurrent).then((response) => {
   const city = data.name;
   let windDeg = data.wind.deg;
   const windSpeed = Math.round(data.wind.speed);
+
   if (windDeg === 0) {
     windDeg = 'North';
   } else if (windDeg > 0 && windDeg < 90) {
@@ -57,6 +58,7 @@ fetchDataPromise(urlWetherCurrent).then((response) => {
   } else if (windDeg === 360) {
     windDeg = 'North';
   }
+
   const date = new Date(data.dt * TIME_CONVERSION);
   const newDate = transformTime(date.getHours()) + ':' + transformTime(date.getMinutes());
   const temp = Math.round(data.main.temp - CORRECTION_VALUE);
@@ -64,30 +66,11 @@ fetchDataPromise(urlWetherCurrent).then((response) => {
   const feels_like = Math.round(data.main.feels_like - CORRECTION_VALUE);
   const iconSrc = `http://openweathermap.org/img/wn/04n@2x.png`;
 
-  console.log(data);
-  renderHeder({
-    city,
-    windDeg,
-    windSpeed,
-    temp,
-    countryCode,
-    feels_like,
-    iconSrc,
-    newDate,
-  });
+  renderHeder({ city, windDeg, windSpeed, temp, countryCode, feels_like, iconSrc, newDate, });
 });
 
 function templateWetherCurrent(weatherHeder) {
-  const {
-    city,
-    windDeg,
-    windSpeed,
-    temp,
-    countryCode,
-    feels_like,
-    iconSrc,
-    newDate,
-  } = weatherHeder;
+  const { city, windDeg, windSpeed, temp, countryCode, feels_like, iconSrc, newDate, } = weatherHeder;
 
   return `
 			<div class="city">
@@ -115,12 +98,11 @@ fetchDataPromise(urlWetherByDays).then((response) => {
 
   data.list.forEach((item, index) => {
     if (index % 8 == 0) {
-      console.log(item);
       const date = new Date(item.dt * TIME_CONVERSION);
-      const newDate =
-        transformTime(date.getDate()) + '.' + transformTime(date.getMonth()) + ' ' + transformTime(date.getHours()) + ' ' + 'p.m.';
+      const newDate = transformTime(date.getDate()) + '.' + transformTime(date.getMonth()) + ' ' + transformTime(date.getHours()) + ' ' + 'p.m.';
       const temp = Math.round(item.main.temp - CORRECTION_VALUE);
-      const iconSrc = `http://openweathermap.org/img/wn/03n@2x.png`;
+      const iconSrc = `http://openweathermap.org/img/wn/03n@2x.png`
+      
       renderMain({ temp, newDate, iconSrc });
     }
   });
